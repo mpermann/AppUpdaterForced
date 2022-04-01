@@ -4,7 +4,7 @@
 # app to be patched, parameter 5 is the name of the app process, parameter 6 is the policy trigger name to
 # install the app. The script is relatively basic and can't currently kill more than one process or patch
 # more than one app. This is a forced update that does not allow deferral.
-# Version 1.0 
+# Version 1.0.1
 # Created 03-28-2022 by Michael Permann
 # Updated 04-01-2022
 
