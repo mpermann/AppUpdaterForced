@@ -22,7 +22,6 @@ DESCRIPTION="Greetings Heartland Area Education Agency Staff
 A MANDATORY update for $APP_NAME is needed.  Please return to $APP_NAME and save your work and quit the application BEFORE returning here and clicking the \"OK\" button to proceed with the update. Caution: your work could be lost if you don't save it and quit $APP_NAME before clicking the \"OK\" button.
 
 Thanks! - IT Department"
-
 BUTTON1="OK"
 DEFAULT_BUTTON="1"
 TITLE2="Update Complete"
