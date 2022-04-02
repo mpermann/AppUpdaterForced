@@ -35,7 +35,7 @@ echo "$POLICY_TRIGGER_NAME"
 APP_PROCESS_ID=$(/bin/ps ax | /usr/bin/pgrep -x "$APP_PROCESS_NAME" | /usr/bin/grep -v grep | /usr/bin/awk '{ print $1 }')
 echo "$APP_NAME process ID $APP_PROCESS_ID"
 
-if [ -z "$APP_PROCESS_ID" ] # Check whether app is running by testing if process id is zero
+if [ -z "$APP_PROCESS_ID" ] # Check whether app is running by testing if string length of process id is zero
 then 
     echo "App NOT running so silently install app"
     "$JAMF_BINARY" policy -event "$POLICY_TRIGGER_NAME"
@@ -49,7 +49,7 @@ else
         echo "User chose $BUTTON1 so proceeding with install"
         APP_PROCESS_ID=$(/bin/ps ax | /usr/bin/pgrep -x "$APP_PROCESS_NAME" | /usr/bin/grep -v grep | /usr/bin/awk '{ print $1 }')
         echo "$APP_NAME process ID $APP_PROCESS_ID"
-        if [ -z "$APP_PROCESS_ID" ] # Check whether app is running by testing if process id is zero
+        if [ -z "$APP_PROCESS_ID" ] # Check whether app is running by testing if string length of process id is zero
         then
             echo "User chose $BUTTON1 and app NOT running so proceed with install"
             "$JAMF_BINARY" policy -event "$POLICY_TRIGGER_NAME"
