@@ -53,6 +53,8 @@ else
         then
             echo "User chose $BUTTON1 and app NOT running so proceed with install"
             "$JAMF_BINARY" policy -event "$POLICY_TRIGGER_NAME"
+            # Add message it's safe to re-open app
+            /bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE2" -description "$DESCRIPTION2" -icon "$AEA11_LOGO" -button1 "$BUTTON1" -defaultButton "1"
             exit 0
         else
             echo "User chose $BUTTON1 and app is running so killing app process ID $APP_PROCESS_ID"
