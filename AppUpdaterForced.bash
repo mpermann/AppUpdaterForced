@@ -4,9 +4,9 @@
 # app to be patched, parameter 5 is the name of the app process, parameter 6 is the policy trigger name to
 # install the app. The script is relatively basic and can't currently kill more than one process or patch
 # more than one app. This is a forced update that does not allow deferral.
-# Version 1.0.1
+# Version 1.0.2
 # Created 03-28-2022 by Michael Permann
-# Updated 04-01-2022
+# Updated 04-15-2022
 
 APP_NAME=$4
 APP_PROCESS_NAME=$5
@@ -19,7 +19,7 @@ JAMF_BINARY=$(which jamf)
 TITLE="Quit Application"
 DESCRIPTION="Greetings Heartland Area Education Agency Staff
 
-A MANDATORY update for $APP_NAME is needed.  Please return to $APP_NAME and save your work and quit the application BEFORE returning here and clicking the \"OK\" button to proceed with the update. Caution: your work could be lost if you don't save it and quit $APP_NAME before clicking the \"OK\" button.
+A critical update for $APP_NAME is needed.  Please return to $APP_NAME and save your work and quit the application BEFORE returning here and clicking the \"OK\" button to proceed with the update. Caution: your work could be lost if you don't save it and quit $APP_NAME before clicking the \"OK\" button.
 
 Thanks! - IT Department"
 BUTTON1="OK"
