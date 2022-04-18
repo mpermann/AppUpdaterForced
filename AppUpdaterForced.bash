@@ -4,16 +4,16 @@
 # app to be patched, parameter 5 is the name of the app process, parameter 6 is the policy trigger name to
 # install the app. The script is relatively basic and can't currently kill more than one process or patch
 # more than one app. This is a forced update that does not allow deferral.
-# Version 1.0.2
+# Version 1.0.3
 # Created 03-28-2022 by Michael Permann
-# Updated 04-15-2022
+# Updated 04-18-2022
 
 APP_NAME=$4
 APP_PROCESS_NAME=$5
 POLICY_TRIGGER_NAME=$6
 CURRENT_USER=$(scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
 USER_ID=$(/usr/bin/id -u "$CURRENT_USER")
-AEA11_LOGO="/Library/Application Support/HeartlandAEA11/Images/HeartlandLogo@512px.png"
+LOGO="/Library/Application Support/HeartlandAEA11/Images/HeartlandLogo@512px.png"
 JAMF_HELPER="/Library/Application Support/JAMF/bin/jamfHelper.app/Contents/MacOS/jamfHelper"
 JAMF_BINARY=$(which jamf)
 TITLE="Quit Application"
@@ -41,7 +41,7 @@ then
     "$JAMF_BINARY" policy -event "$POLICY_TRIGGER_NAME"
     exit 0
 else
-    DIALOG=$(/bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE" -description "$DESCRIPTION" -icon "$AEA11_LOGO" -button1 "$BUTTON1" -defaultButton "$DEFAULT_BUTTON")
+    DIALOG=$(/bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE" -description "$DESCRIPTION" -icon "$LOGO" -button1 "$BUTTON1" -defaultButton "$DEFAULT_BUTTON")
     echo "$DIALOG"
     echo "App was running"
     if [ "$DIALOG" = "0" ] # Check if the default OK button was clicked
@@ -54,7 +54,7 @@ else
             echo "User chose $BUTTON1 and app NOT running so proceed with install"
             "$JAMF_BINARY" policy -event "$POLICY_TRIGGER_NAME"
             # Add message it's safe to re-open app
-            /bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE2" -description "$DESCRIPTION2" -icon "$AEA11_LOGO" -button1 "$BUTTON1" -defaultButton "1"
+            /bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE2" -description "$DESCRIPTION2" -icon "$LOGO" -button1 "$BUTTON1" -defaultButton "1"
             exit 0
         else
             echo "User chose $BUTTON1 and app is running so killing app process ID $APP_PROCESS_ID"
@@ -62,7 +62,7 @@ else
             echo "Proceeding with app install"
             "$JAMF_BINARY" policy -event "$POLICY_TRIGGER_NAME"
             # Add message it's safe to re-open app
-            /bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE2" -description "$DESCRIPTION2" -icon "$AEA11_LOGO" -button1 "$BUTTON1" -defaultButton "1"
+            /bin/launchctl asuser "$USER_ID" /usr/bin/sudo -u "$CURRENT_USER" "$JAMF_HELPER" -windowType utility -windowPosition lr -title "$TITLE2" -description "$DESCRIPTION2" -icon "$LOGO" -button1 "$BUTTON1" -defaultButton "1"
             exit 0
         fi
     fi
