@@ -1,14 +1,15 @@
 #!/bin/bash
 
+# Name: AppUpdaterForced.bash
+# Version: 1.0.4
+# Created: 03-28-2022 by Michael Permann
+# Updated: 06-04-2022
 # The script is for patching an app with user notification before starting, if the app is running. If the app
 # is not running, it will be silently patched without any notification to the user. Parameter 4 is the name
 # of the app to patch. Parameter 5 is the name of the app process. Parameter 6 is the policy trigger name
 # for the policy installing the app. This is a forced update that does not allow deferral, but requires user
 # consent to start the patching. The script is relatively basic and can't currently kill more than one process
 # or patch more than one app.
-# Version 1.0.4
-# Created 03-28-2022 by Michael Permann
-# Updated 06-04-2022
 
 APP_NAME=$4
 APP_PROCESS_NAME=$5
