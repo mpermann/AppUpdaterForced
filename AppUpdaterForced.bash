@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Name: AppUpdaterForced.bash
-# Version: 1.0.4
+# Version: 1.0.5
 # Created: 03-28-2022 by Michael Permann
-# Updated: 06-04-2022
+# Updated: 07-15-2022
 # The script is for patching an app with user notification before starting, if the app is running. If the app
 # is not running, it will be silently patched without any notification to the user. Parameter 4 is the name
 # of the app to patch. Parameter 5 is the name of the app process. Parameter 6 is the policy trigger name
@@ -26,6 +26,7 @@ A critical update for $APP_NAME is needed.  Please return to $APP_NAME and save 
 
 Caution: your work could be lost if you don't save it and quit $APP_NAME before clicking the \"OK\" button.
 
+Any questions or issues please contact techsupport@heartlandaea.org.
 Thanks! - IT Department"
 BUTTON1="OK"
 DEFAULT_BUTTON="1"
