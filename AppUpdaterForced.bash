@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Name: AppUpdaterForced.bash
-# Version: 1.0.5
+# Version: 1.0.6
 # Created: 03-28-2022 by Michael Permann
-# Updated: 07-15-2022
+# Updated: 07-20-2022
 # The script is for patching an app with user notification before starting, if the app is running. If the app
 # is not running, it will be silently patched without any notification to the user. Parameter 4 is the name
 # of the app to patch. Parameter 5 is the name of the app process. Parameter 6 is the policy trigger name
@@ -38,6 +38,13 @@ APP_PROCESS_ID=$(/bin/ps ax | /usr/bin/pgrep -x "$APP_PROCESS_NAME" | /usr/bin/g
 
 echo "App to Update: $APP_NAME  Process Name: $APP_PROCESS_NAME"
 echo "Policy Trigger: $POLICY_TRIGGER_NAME  Process ID: $APP_PROCESS_ID"
+
+if [ -e "/Library/Application Support/HeartlandAEA11/Reporting/${APP_NAME} Deferral.plist" ]  # Check whether there is a deferral plist file present and delete if there is
+then
+    /bin/rm -rf "/Library/Application Support/HeartlandAEA11/Reporting/${APP_NAME} Deferral.plist"
+else
+    echo "No app deferral plist to remove."
+fi
 
 if [ -z "$APP_PROCESS_ID" ] # Check whether app is running by testing if string length of process id is zero.
 then 
