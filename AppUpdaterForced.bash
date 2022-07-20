@@ -36,8 +36,8 @@ DESCRIPTION2="Thank You!
 $APP_NAME has been updated on your computer. You may relaunch it now if you wish."
 APP_PROCESS_ID=$(/bin/ps ax | /usr/bin/pgrep -x "$APP_PROCESS_NAME" | /usr/bin/grep -v grep | /usr/bin/awk '{ print $1 }')
 
-echo "App to Update: $APP_NAME  Process Name: $APP_PROCESS_NAME"
-echo "Policy Trigger: $POLICY_TRIGGER_NAME  Process ID: $APP_PROCESS_ID"
+echo "App to Update: $APP_NAME  Process Name: $APP_PROCESS_NAME Process ID: $APP_PROCESS_ID"
+echo "Policy Trigger: $POLICY_TRIGGER_NAME "
 
 if [ -e "/Library/Application Support/HeartlandAEA11/Reporting/${APP_NAME} Deferral.plist" ]  # Check whether there is a deferral plist file present and delete if there is
 then
