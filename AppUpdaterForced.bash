@@ -42,6 +42,7 @@ echo "Policy Trigger: $POLICY_TRIGGER_NAME  Process ID: $APP_PROCESS_ID"
 if [ -e "/Library/Application Support/HeartlandAEA11/Reporting/${APP_NAME} Deferral.plist" ]  # Check whether there is a deferral plist file present and delete if there is
 then
     /bin/rm -rf "/Library/Application Support/HeartlandAEA11/Reporting/${APP_NAME} Deferral.plist"
+    echo "App deferral plist removed."
 else
     echo "No app deferral plist to remove."
 fi
