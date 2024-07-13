@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Name: AppUpdaterForced.bash
-# Version: 1.0.7
+# Version: 1.0.8
 # Created: 03-28-2022 by Michael Permann
-# Updated: 10-21-2022
+# Updated: 07-12-2024
 # The script is for patching an app with user notification before starting, if the app is running. If the app
 # is not running, it will be silently patched without any notification to the user. Parameter 4 is the name
 # of the app to patch. Parameter 5 is the name of the app process. Parameter 6 is the policy trigger name
@@ -16,17 +16,17 @@ APP_PROCESS_NAME=$5
 POLICY_TRIGGER_NAME=$6
 CURRENT_USER=$(scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
 USER_ID=$(/usr/bin/id -u "$CURRENT_USER")
-LOGO="/Library/Application Support/HeartlandAEA11/Images/HeartlandLogo@512px.png"
+LOGO="/Library/Management/PCC/Images/PCC1Logo@512px.png"
 JAMF_HELPER="/Library/Application Support/JAMF/bin/jamfHelper.app/Contents/MacOS/jamfHelper"
 JAMF_BINARY=$(which jamf)
 TITLE="Quit Application"
-DESCRIPTION="Greetings Heartland Area Education Agency Staff
+DESCRIPTION="Greetings PERMANNent Computer Consulting LLC Staff
 
 A critical update for $APP_NAME is needed.  Please return to $APP_NAME and save your work and quit the application BEFORE returning here and clicking the \"OK\" button to proceed with the update. 
 
 Caution: your work could be lost if you don't save it and quit $APP_NAME before clicking the \"OK\" button.
 
-Any questions or issues please contact techsupport@heartlandaea.org.
+Any questions or issues please contact techsupport@permannentcc.com.
 Thanks!"
 BUTTON1="OK"
 DEFAULT_BUTTON="1"
